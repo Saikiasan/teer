@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./lib/ionicons/css/ionicons.min.css">
+  <style>
+    .navbar-toggler {
+      border: none !important;
+      box-shadow: none !important;
+    }
+    .navbar.a {
+      border-radius: 500px 500px 0px 0px !important;
+      background: #000 !important;
+    }
+    .navbar {
+      border-radius: 0;
+      text-transform: uppercase;
+      transition: 0.3s ease-in all;
+    }
+    .navbar .dropdown-item {
+      color: goldenrod;
+    }
+    .navbar .dropdown-item:hover {
+      background: none;
+    }
+    .navbar-nav {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler mx-auto p-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarmenu" aria-controls="navbarmenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-caret-up fa-2x text-success"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarmenu">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./results.html">Game Results</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="tickets" data-bs-toggle="dropdown" aria-expanded="false">Tickets</a>
+              <ul class="dropdown-menu text-center mx-5 bg-transparent" aria-labelledby="tickets">
+                <li><a class="dropdown-item" href="#">5</a></li>
+                <li><a class="dropdown-item" href="#">10</a></li>
+                <li><a class="dropdown-item" href="#">20</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">News</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="m-5 row">
+        <div class="d-flex justify-content-center gap-2 mb-3">
+          <label for="ticket" class="form-label text-uppercase">ticket</label>
+          <select name="ticket" class="form-select" style="width: 40%;">
+            <option value="5">5</option>
+            <option value="5">10</option>
+            <option value="5">20</option>
+          </select>
+        </div>
+        <div class="d-flex mb-3 justify-content-evenly">
+          <div class="flex-column">
+            <label for="fr" class="form-label text-uppercase">first round</label>
+            <input type="text" name="fr" class="form-control" style="width: 40%">
+          </div>
+          <div class="flex-column">
+            <label for="sr" class="form-label text-uppercase">second round</label>
+            <input type="text" name="sr" class="form-control" style="width: 40%">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const cion = $('.navbar-toggler i'), navbtn = $('.navbar-toggler');
+    navbtn.on('click', function() {
+      cion.toggleClass('fa-caret-up fa-caret-down').toggleClass('text-success text-danger');
+      $('.navbar').toggleClass('a')
+    })
+  </script>
+</body>
+</html>
