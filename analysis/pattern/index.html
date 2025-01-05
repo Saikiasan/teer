@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teer Results Analysis</title>
+    <style>
+      /* Dark Theme */
+      body {
+        background-color: #212121;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        margin: 20px;
+        text-align: center;
+      }
+
+      table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #333;
+        border: 1px solid #444;
+        overflow-x: auto;
+        display: block;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #444;
+      }
+
+      th {
+        background-color: #444;
+        color: #fff;
+        position: sticky;
+        top: 0;
+      }
+
+      td {
+        color: #ccc;
+      }
+
+      canvas {
+        display: block;
+        margin: 20px auto;
+        max-width: 90%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <style>
+      /* Navbar styles */
+      nav {
+        background-color: #333;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        margin: 0 5px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        background-color: #444;
+      }
+
+      /* Active link style */
+      nav a.active {
+        background-color: #555;
+      }
+
+      /* Responsive navbar */
+      @media screen and (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav a {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    </style>
+    <nav>
+      <a href="../../">Home</a>
+      <a href="../">Analysis</a>
+      <a href="#pattern" class="active">Visualization</a>
+    </nav>
+    <div>
+      <h2>Analysis: Number Occurrences by Date</h2>
+      <table>
+        <thead id="analysis-header">
+          <tr>
+            <th>Date</th>
+            <!-- Dynamically generated column headers for numbers 1 to 99 -->
+          </tr>
+        </thead>
+        <tbody id="analysis-body">
+          <!-- Dynamic content rendered by script -->
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <h2>Pattern Visualization</h2>
+      <canvas id="pattern-chart"></canvas>
+    </div>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+
+</html>

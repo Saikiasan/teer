@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teer Data Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #212121;
+        color: #FFFFFF;
+      }
+
+      .filter-container,
+      .chart-container {
+        margin-bottom: 20px;
+      }
+
+      .filter-container label,
+      .filter-container select,
+      .filter-container input {
+        margin-right: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <style>
+      /* Navbar styles */
+      nav {
+        background-color: #333;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        margin: 0 5px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      nav a:hover {
+        background-color: #444;
+      }
+
+      /* Active link style */
+      nav a.active {
+        background-color: #555;
+      }
+
+      /* Responsive navbar */
+      @media screen and (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav a {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    </style>
+    <nav>
+      <a href="../">Home</a>
+      <a href="#" class="active">Analysis</a>
+      <a href="pattern/">Visualization</a>
+    </nav>
+    <h1>Teer Data Analysis</h1>
+
+    <div class="filter-container">
+      <label for="filter-type">Filter by:</label>
+      <select id="filter-type">
+        <option value="date">Date</option>
+        <option value="day">Day</option>
+        <option value="month">Month</option>
+        <option value="year">Year</option>
+      </select>
+      <input type="date" id="filter-date" style="display: none;">
+      <input type="month" id="filter-month" style="display: none;">
+      <input type="number" id="filter-year" placeholder="Enter year" style="display: none;">
+      <button id="apply-filter">Apply Filter</button>
+    </div>
+
+    <div class="chart-container">
+      <label for="chart-type">Select Chart Type:</label>
+      <select id="chart-type">
+        <option value="bar">Bar Chart</option>
+        <option value="line">Line Chart</option>
+        <option value="pie">Pie Chart</option>
+        <option value="radar">Radar Chart</option>
+        <option value="horizontalBar">Horizontal Bar Chart</option>
+      </select>
+      <canvas id="occurrence-chart"></canvas>
+    </div>
+
+
+    <table id="results-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>First Round</th>
+          <th>Second Round</th>
+        </tr>
+      </thead>
+      <tbody id="results-body"></tbody>
+    </table>
+
+    <script src="teer-analysis.js"></script>
+  </body>
+
+</html>
