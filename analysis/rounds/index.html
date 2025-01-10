@@ -95,13 +95,35 @@
             const response = await fetch(apiUrl);
             if (!response.ok) throw new Error("Failed to fetch data");
             allData = await response.json();
+
+            // Get the current year and month
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth();
+
+            // Filter data for the current month
+            const currentMonthData = allData.filter((entry) => {
+              const date = new Date(entry.date);
+              return (
+                date.getFullYear() === currentYear && date.getMonth() === currentMonth
+              );
+            });
+
+            // Populate dropdowns and render graph
             populateYearDropdown(allData);
-            renderGraph(allData);
+            populateMonthDropdown(allData, currentYear.toString());
+            populateWeekDropdown(allData, currentYear.toString(), currentMonth);
+            renderGraph(currentMonthData);
+
+            // Set default dropdown selections
+            document.getElementById("year-select").value = currentYear.toString();
+            document.getElementById("month-select").value = currentMonth.toString();
           } catch (error) {
             console.error("Error fetching data:", error);
             alert("Unable to fetch data. Please try again later.");
           }
         }
+
 
         // Populate Year Dropdown
         function populateYearDropdown(data) {
