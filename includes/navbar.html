@@ -1,0 +1,48 @@
+<!-- NAVIGATION BAR -->
+
+<style>
+  /* Navbar styles */
+  nav {
+    background-color: #333;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    background-color: #444;
+  }
+
+  /* Active link style */
+  nav a.active {
+    background-color: #555;
+  }
+
+  /* Responsive navbar */
+  @media screen and (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav a {
+      width: 100%;
+      text-align: left;
+    }
+  }
+</style>
+<nav>
+  <a href="#" class="active">Home</a>
+  <a href="analysis/">Analysis</a>
+  <a href="analysis/pattern/">Visualization</a>
+</nav>
