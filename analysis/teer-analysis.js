@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const apiUrl = "https://admin.shillongteerground.com/teer/api/results/";
+  const apiUrl = CONFIG.API_URL;
   const filterType = document.getElementById("filter-type");
   const filterInputs = {
     date: document.getElementById("filter-date"),
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch(apiUrl);
       if (!response.ok) throw new Error("Failed to fetch data");
       allData = await response.json();
-      renderTable(allData);
+      // renderTable(allData);
       updateChart(allData, "bar"); // Default chart type
     } catch (error) {
       console.error("Error fetching data:", error);

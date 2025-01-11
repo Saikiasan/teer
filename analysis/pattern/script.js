@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const apiUrl = "https://admin.shillongteerground.com/teer/api/results";
+  const apiUrl = CONFIG.API_URL;
   const analysisTableHeader = document.getElementById("analysis-header");
   const analysisTableBody = document.getElementById("analysis-body");
   const patternChartCanvas = document
@@ -27,8 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch(apiUrl);
       if (!response.ok) throw new Error("Failed to fetch data");
       allData = await response.json();
-      renderAnalysisTable(allData);
-      renderPatternChart(allData);
+
+      // Filter for the current year
+      const currentYear = new Date().getFullYear();
+      const filteredData = allData.filter((entry) => {
+        const entryYear = new Date(entry.date).getFullYear();
+        return entryYear === currentYear;
+      });
+
+      renderAnalysisTable(filteredData);
+      renderPatternChart(filteredData);
     } catch (error) {
       console.error("Error fetching data:", error);
       alert("Unable to fetch data. Please try again later.");
@@ -47,16 +55,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Build table rows
     const rows = Object.entries(occurrencesByDate).map(
       ([date, occurrences]) => {
-        const cells = Array.from(
-          { length: 99 },
-          (_, i) => occurrences[i + 1] || 0
-        );
+        const cells = Array.from({ length: 99 }, (_, i) => {
+          const count = occurrences[i + 1] || 0;
+          // Check if the count is 1 and set the background color to white
+          const cellStyle =
+            count === 1 ? "background-color: white;color: black;" : "";
+          return `<td style="color: #ccc; ${cellStyle}">${count}</td>`;
+        });
         return `
         <tr>
           <td style="color: #fff;">${date}</td>
-          ${cells
-            .map((count) => `<td style="color: #ccc;">${count}</td>`)
-            .join("")}
+          ${cells.join("")}
         </tr>`;
       }
     );
@@ -115,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
           x: {
             title: { display: true, text: "Date", color: "#FFFFFF" },
             ticks: { color: "#FFFFFF" },
-            grid: { color: "rgba(255, 255, 255, 0.2)" },
+            grid: { color: "rgba(61, 167, 25, 0.2)" },
           },
           y: {
             title: { display: true, text: "Occurrences", color: "#FFFFFF" },

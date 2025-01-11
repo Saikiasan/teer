@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teer Results</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <style>
       @font-face {
         font-family: 'Atomy';
@@ -58,68 +62,43 @@
   </head>
 
   <body>
-    <style>
-      /* Navbar styles */
-      nav {
-        background-color: #333;
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    <div id="navbar"></div>
 
-      nav a {
-        color: #fff;
-        text-decoration: none;
-        padding: 10px 15px;
-        margin: 0 5px;
-        border-radius: 5px;
-        font-weight: bold;
-      }
-
-      nav a:hover {
-        background-color: #444;
-      }
-
-      /* Active link style */
-      nav a.active {
-        background-color: #555;
-      }
-
-      /* Responsive navbar */
-      @media screen and (max-width: 768px) {
-        nav {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        nav a {
-          width: 100%;
-          text-align: left;
-        }
-      }
-    </style>
-    <nav>
-      <a href="#" class="active">Home</a>
-      <a href="analysis/">Analysis</a>
-      <a href="analysis/pattern/">Visualization</a>
-    </nav>
     <header>
       <h1>Previous Teer Results</h1>
       <p>Created by Ankit Saikia 2025 Jan 4</p>
     </header>
+    <div>
+      <select id="year-filter"></select>
+      <select id="month-filter"></select>
+      <select id="day-filter"></select>
+    </div>
+
     <table>
       <thead>
         <tr>
           <th>Date</th>
-          <th>First Round (FR)</th>
-          <th>Second Round (SR)</th>
+          <th>First Round</th>
+          <th>Second Round</th>
         </tr>
       </thead>
       <tbody id="results"></tbody>
     </table>
 
-    <script src="./jscript/results.js"></script>
+    <div id="pagination"></div>
+
+    <script>
+      fetch('includes/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading navbar:', error));
+    </script>
+
+
+    <script src="jscript/config.js"></script>
+    <script src="jscript/results.js"></script>
   </body>
 
 </html>

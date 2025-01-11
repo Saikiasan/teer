@@ -78,12 +78,13 @@
     </div>
     <canvas id="teer-chart"></canvas>
 
+    <script src="../../jscript/config.js"></script>
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const apiUrl = "https://admin.shillongteerground.com/teer/api/results";
+        const apiUrl = CONFIG.API_URL;
         const ctx = document.getElementById("teer-chart").getContext("2d");
 
         let chartInstance;
