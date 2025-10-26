@@ -1,104 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teer Results</title>
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-    <style>
-      @font-face {
-        font-family: 'Atomy';
-        src: url('./lib/fonts/Atomy_ttf/Atomy-Bold.ttf');
-      }
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
 
-      html {
-        font-family: 'Atomy';
-        user-select: none;
-        -moz-user-select: none;
-        -webkit-user-select: none;
-      }
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        /* margin: 20px 0; */
-        font-size: 18px;
-        font-family: 'Atomy';
-        text-align: center;
-      }
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="mongo_fm">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-      thead {
-        position: sticky;
-        top: 0;
-      }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-      thead th {
-        background-color: #4CAF50;
-        /* Green header */
-        color: white;
-        padding: 10px;
-      }
+  <title>mongo_fm</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <script src='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs' type='module'></script>
+  <script type='module'>
+  var { pdfjsLib } = globalThis;
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.mjs';
 
-      tbody td {
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-        /* Light gray borders */
-      }
-
-      tbody tr:nth-child(even) {
-        background-color: #f2f2f2;
-        /* Zebra stripe effect */
-      }
-
-      tbody tr:hover {
-        background-color: #f1f1f1;
-        /* Highlight row on hover */
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="navbar"></div>
-
-    <header>
-      <h1>Previous Teer Results</h1>
-      <p>Created by Ankit Saikia 2025 Jan 4</p>
-    </header>
-    <div>
-      <select id="year-filter"></select>
-      <select id="month-filter"></select>
-      <select id="day-filter"></select>
-    </div>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>First Round</th>
-          <th>Second Round</th>
-        </tr>
-      </thead>
-      <tbody id="results"></tbody>
-    </table>
-
-    <div id="pagination"></div>
-
-    <script>
-      fetch('includes/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('navbar').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading navbar:', error));
-    </script>
-
-
-    <script src="jscript/config.js"></script>
-    <script src="jscript/results.js"></script>
-  </body>
-
+  var pdfRenderOptions = {
+    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/cmaps/',
+    cMapPacked: true,
+  }
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
 </html>
